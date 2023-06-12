@@ -83,6 +83,75 @@
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/customizer.css')); ?>">
 
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/landing.css')); ?>" />
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 10px;
+        }
+
+        .portfolio-item {
+            margin-bottom: 20px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .roadmap-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .roadmap-date {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .roadmap-content {
+            border-left: 2px solid #333;
+            padding-left: 20px;
+        }
+
+        .roadmap-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .roadmap-description {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
 </head>
 
 <body class="<?php echo e($color); ?>">
@@ -91,7 +160,9 @@
     <div class="container">
         <a class="navbar-brand bg-transparent" href="">
 
-                <img src="<?php echo e($logo .'/logo-light.png'); ?>" alt="logo" width="40%"/>
+
+                <img src="<?php echo e(asset('assets/images/fintechcoin.png')); ?>" alt="logo" width="40%"/>
+
 
         </a>
         <button
@@ -113,18 +184,27 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#features">Features</a>
                 </li>
+
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#layouts">Layouts</a>
+
+                    <a class="nav-link"  href="#team">Our Team</a>
+
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#testimonial">Testimonial</a>
+
+                    <a class="nav-link" href="#roadmap">Roadmap</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#pricing">Pricing</a>
+                    <a class="btn btn-light ms-2 me-1" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#faq">Faq</a>
-                </li>
+                <?php if($settings['enable_signup'] == 'on'): ?>
+                    <li class="nav-item">
+                        <a class="btn btn-light ms-2 me-1" href="<?php echo e(route('register')); ?>">Register</a>
+                    </li>
+                <?php endif; ?>
+
 
             </ul>
         </div>
@@ -171,7 +251,7 @@
 </header>
 
 
-<section id="feature" class="feature">
+<section id="features" class="feature">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6 col-md-9 title">
@@ -180,6 +260,7 @@
                     system
                 </h2>
                 <p class="m-0">
+
                     Use these awesome forms to login or create new account in your
                     project for free.
                 </p>
@@ -198,13 +279,15 @@
                 >
                     <div class="card-body">
                         <div class="theme-avtar bg-danger">
-                            <i class="ti ti-report-money"></i>
+
+                            <i class="fa  fa-desktop"></i>
                         </div>
-                        <h6 class="text-muted mt-4">ABOUT</h6>
-                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <h6 class="text-muted mt-4">Feature</h6>
+                        <h4 class="my-3 f-w-600"> Custom Software Development:</h4>
                         <p class="mb-0">
-                            Use these awesome forms to login or create new account in your
-                            project for free.
+
+                            Software houses specialize in creating tailor-made software solutions to meet the unique needs of their clients. They develop software applications, websites, mobile apps, and other digital products from scratch, ensuring that they align with the client's requirements.
+
                         </p>
                     </div>
                 </div>
@@ -221,13 +304,14 @@
                 >
                     <div class="card-body">
                         <div class="theme-avtar bg-success">
-                            <i class="ti ti-user-plus"></i>
+
+                            <i class="fa fa-globe"></i>
                         </div>
-                        <h6 class="text-muted mt-4">ABOUT</h6>
-                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <h6 class="text-muted mt-4">Feature</h6>
+                        <h4 class="my-3 f-w-600">Web Development:</h4>
                         <p class="mb-0">
-                            Use these awesome forms to login or create new account in your
-                            project for free.
+                             Software houses offer expertise in building responsive and interactive websites using a variety of technologies such as HTML, CSS, JavaScript, and frameworks like React, Angular, or Vue.js. They can develop static websites, dynamic web applications, and e-commerce platforms.
+
                         </p>
                     </div>
                 </div>
@@ -244,13 +328,12 @@
                 >
                     <div class="card-body">
                         <div class="theme-avtar bg-warning">
-                            <i class="ti ti-users"></i>
+                            <i class="fa fa-mobile"></i>
                         </div>
-                        <h6 class="text-muted mt-4">ABOUT</h6>
-                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <h6 class="text-muted mt-4">Feature</h6>
+                        <h4 class="my-3 f-w-600">Mobile App Development:</h4>
                         <p class="mb-0">
-                            Use these awesome forms to login or create new account in your
-                            project for free.
+                             With the increasing popularity of mobile devices, software houses often offer mobile app development services for both iOS and Android platforms. They can develop native apps, hybrid apps, or progressive web apps (PWAs), depending on the client's needs and target audience.
                         </p>
                     </div>
                 </div>
@@ -267,23 +350,23 @@
                 >
                     <div class="card-body">
                         <div class="theme-avtar bg-danger">
-                            <i class="ti ti-report-money"></i>
+
+                            <i class="fa fa-palette"></i>
                         </div>
-                        <h6 class="text-muted mt-4">ABOUT</h6>
-                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <h6 class="text-muted mt-4">Feature</h6>
+                        <h4 class="my-3 f-w-600">UI/UX Design:</h4>
                         <p class="mb-0">
-                            Use these awesome forms to login or create new account in your
-                            project for free.
+                             Software houses usually have skilled designers who can create visually appealing and user-friendly interfaces for software applications and websites. They focus on providing a seamless user experience (UX) through intuitive layouts, effective navigation, and aesthetically pleasing designs.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="text-center pt-sm-5 feature-mobile-screen">
-            <button class="btn px-sm-5 btn-primary me-sm-3 ">Buy Now</button>
-            <button class="btn px-sm-5 btn-outline-primary">
-                View documentation
-            </button>
+
+            <a class="btn px-sm-5 btn-primary me-sm-3 " href="<?php echo e(route('login')); ?>">Start with Us  <i class="ti ti-chevron-right ms-2"></i></a>
+            <a class="btn px-sm-5 btn-outline-primary" href="<?php echo e(route('register')); ?>">Register Now</a>
+
         </div>
     </div>
 </section>
@@ -296,8 +379,7 @@
                     class="mb-sm-4 f-w-600 wow animate__fadeInLeft"
                     data-wow-delay="0.2s"
                 >
-                    <?php echo e(__('ERPGo SaaS')); ?>
-
+                    MobileApplication
                 </h1>
                 <h2 class="mb-sm-4 wow animate__fadeInLeft" data-wow-delay="0.4s">
                     <?php echo e(__('All In One Business ERP With Project, Account, HRM, CRM')); ?>
@@ -308,9 +390,10 @@
                     project for free.
                 </p>
                 <div class="my-4 wow animate__fadeInLeft" data-wow-delay="0.8s">
-                    <a href="#" class="btn btn-primary" target="_blank"
-                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a
-                    >
+
+                    <a class="btn btn-primary" href="<?php echo e(route('login')); ?>">Start with Us  <i class="ti ti-chevron-right ms-2"></i></a>
+
+
                 </div>
             </div>
             <div class="col-sm-6">
@@ -336,8 +419,7 @@
                     class="mb-sm-4 f-w-600 wow animate__fadeInRight"
                     data-wow-delay="0.2s"
                 >
-                    <?php echo e(__('ERPGo SaaS')); ?>
-
+                    WebApplication
                 </h1>
                 <h2 class="mb-sm-4 wow animate__fadeInRight" data-wow-delay="0.4s">
                     <?php echo e(__('All In One Business ERP With Project, Account, HRM, CRM')); ?>
@@ -348,21 +430,19 @@
                     project for free.
                 </p>
                 <div class="my-4 wow animate__fadeInRight" data-wow-delay="0.8s">
-                    <a href="#" class="btn btn-primary" target="_blank"
-                    ><i class="fas fa-shopping-cart me-2"></i>Buy now</a
-                    >
+                    <a class="btn btn-primary" href="<?php echo e(route('login')); ?>">Start with Us  <i class="ti ti-chevron-right ms-2"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="price" class="price-section">
+<section id="roadmap" class="price-section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6 col-md-9 title">
                 <h2>
-                    <span class="d-block mb-3">Price</span> All in one place CRM
+                    <span class="d-block mb-3">RoadMap</span> All in one place CRM
                     system
                 </h2>
                 <p class="m-0">
@@ -383,41 +463,36 @@
               "
                 >
                     <div class="card-body">
-                        <span class="price-badge bg-primary">STARTER</span>
+                        <span class="price-badge bg-primary">Phase 1: Planning</span>
                         <span class="mb-4 f-w-600 p-price"
-                        >$59<small class="text-sm">/month</small></span
+                        >Planning</span
                         >
                         <p class="mb-0">
-                            You have Free Unlimited Updates and <br />
-                            Premium Support on each package.
+
+                            Define project requirements and <br />
+                            create a detailed plan.
                         </p>
                         <ul class="list-unstyled my-5">
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                2 team members
+                                Gather client requirements
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                20GB Cloud storage
+                                Create project timeline
                             </li>
-                            <li>
-                    <span class="theme-avtar">
-                      <i class="text-primary ti ti-circle-plus"></i
-                      ></span>
-                                Integration help
-                            </li>
+
                         </ul>
                         <div class="d-grid text-center">
-                            <button
-                                class="btn mb-3 btn-primary d-flex justify-content-center align-items-center mx-sm-5"
-                            >
-                                Start with Standard plan
-                                <i class="ti ti-chevron-right ms-2"></i>
-                            </button>
+
+
+                                <a class="btn mb-3 btn-primary d-flex justify-content-center align-items-center mx-sm-5" href="<?php echo e(route('login')); ?>">Start with Us  <i class="ti ti-chevron-right ms-2"></i></a>
+
+
                         </div>
                     </div>
                 </div>
@@ -433,32 +508,33 @@
               "
                 >
                     <div class="card-body">
-                        <span class="price-badge">STARTER</span>
+                        <span class="price-badge">Phase 2: Development</span>
                         <span class="mb-4 f-w-600 p-price"
-                        >$59<small class="text-sm">/month</small></span
+                        >Develop</span
                         >
                         <p class="mb-0">
-                            You have Free Unlimited Updates and <br />
-                            Premium Support on each package.
+
+                            Build and implement <br />
+                            the software solution.
                         </p>
                         <ul class="list-unstyled my-5">
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                2 team members
+                                Develop core features
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                20GB Cloud storage
+                                Perform testing and bug fixing
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                Integration help
+                                Integrate additional functionalities
                             </li>
                             <li>
                     <span class="theme-avtar">
@@ -468,12 +544,10 @@
                             </li>
                         </ul>
                         <div class="d-grid text-center">
-                            <button
-                                class="btn mb-3 btn-light d-flex justify-content-center align-items-center mx-sm-5"
-                            >
-                                Start with Standard plan
-                                <i class="ti ti-chevron-right ms-2"></i>
-                            </button>
+
+                            <a class="btn mb-3 btn-light d-flex justify-content-center align-items-center mx-sm-5" href="<?php echo e(route('login')); ?>">Start with Us  <i class="ti ti-chevron-right ms-2"></i></a>
+
+
                         </div>
                     </div>
                 </div>
@@ -489,59 +563,57 @@
               "
                 >
                     <div class="card-body">
-                        <span class="price-badge bg-primary">STARTER</span>
+                        <span class="price-badge bg-primary">Phase 3: Deployment</span>
                         <span class="mb-4 f-w-600 p-price"
-                        >$119<small class="text-sm">/month</small></span
+                        >Deploy</span
                         >
                         <p class="mb-0">
-                            You have Free Unlimited Updates and <br />
-                            Premium Support on each package.
+
+                            Launch and deliver <br />
+                            the software solution.
                         </p>
                         <ul class="list-unstyled my-5">
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                2 team members
+                                Prepare for deployment
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                20GB Cloud storage
+                                Deploy the software to production
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                Integration help
+                                Conduct Performance Testing
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                2 team members
+                                Data Migration
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                20GB Cloud storage
+                                Deployment to Production
                             </li>
                             <li>
                     <span class="theme-avtar">
                       <i class="text-primary ti ti-circle-plus"></i
                       ></span>
-                                Integration help
+                                Post-Deployment Monitoring and Support
                             </li>
                         </ul>
                         <div class="d-grid text-center">
-                            <button
-                                class="btn mb-3 btn-primary d-flex justify-content-center align-items-center mx-sm-5"
-                            >
-                                Start with Standard plan
-                                <i class="ti ti-chevron-right ms-2"></i>
-                            </button>
+
+                            <a class="btn mb-3 btn-primary d-flex justify-content-center align-items-center mx-sm-5" href="<?php echo e(route('login')); ?>">Start with Us  <i class="ti ti-chevron-right ms-2"></i></a>
+
                         </div>
                     </div>
                 </div>
@@ -550,127 +622,150 @@
     </div>
 </section>
 
-<section class="faq">
+
+<section id="team" class="team">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6 col-md-9 title">
-                <h2><span>Frequently Asked Questions </span></h2>
-                <p class="m-0">
-                    Use these awesome forms to login or create new account in your
-                    project for free.
-                </p>
+                <h2>
+                    <span class="d-block mb-3">our team</span>
+                </h2>
+
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-10 col-xxl-8">
-                <div class="accordion accordion-flush" id="accordionExample">
-                    <div class="accordion-item card">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button
-                                class="accordion-button"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne"
-                                aria-expanded="true"
-                                aria-controls="collapseOne"
-                            >
-                    <span class="d-flex align-items-center">
-                      <i class="ti ti-info-circle text-primary"></i> How do I
-                      order?
-                    </span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseOne"
-                            class="accordion-collapse collapse show"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <strong>This is the first item's accordion body.</strong> It
-                                is shown by default, until the collapse plugin adds the
-                                appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the
-                                showing and hiding via CSS transitions. You can modify any
-                                of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go
-                                within the <code>.accordion-body</code>, though the
-                                transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item card">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo"
-                                aria-expanded="false"
-                                aria-controls="collapseTwo"
-                            >
-                    <span class="d-flex align-items-center">
-                      <i class="ti ti-info-circle text-primary"></i> How do I
-                      order?
-                    </span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseTwo"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong>
-                                It is hidden by default, until the collapse plugin adds the
-                                appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the
-                                showing and hiding via CSS transitions. You can modify any
-                                of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go
-                                within the <code>.accordion-body</code>, though the
-                                transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item card">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree"
-                                aria-expanded="false"
-                                aria-controls="collapseThree"
-                            >
-                    <span class="d-flex align-items-center">
-                      <i class="ti ti-info-circle text-primary"></i> How do I
-                      order?
-                    </span>
-                            </button>
-                        </h2>
-                        <div
-                            id="collapseThree"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample"
-                        >
-                            <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It
-                                is hidden by default, until the collapse plugin adds the
-                                appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the
-                                showing and hiding via CSS transitions. You can modify any
-                                of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go
-                                within the <code>.accordion-body</code>, though the
-                                transition does limit overflow.
-                            </div>
-                        </div>
+            <div class="col-lg-2 col-md-6">
+                <div
+                    class="card wow animate__fadeInUp"
+                    data-wow-delay="0.8s"
+                    style="
+                visibility: visible;
+                animation-delay: 0.2s;
+                animation-name: fadeInUp;
+              "
+                >
+
+
+                    <img src='<?php echo e(asset('assets/images/siavash.png')); ?>'>
+                    <div class="card-body">
+
+                        <h6 class="text-muted mt-4">Siavash Akbarzadeh</h6>
+                        <h4 class="my-3 f-w-600">Developer</h4>
+                        <p class="mb-0">
+                            Skills: HTML, CSS, JavaScript, Python
+                        </p>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-2 col-md-6">
+                <div
+                    class="card wow animate__fadeInUp"
+                    data-wow-delay="0.4s"
+                    style="
+                visibility: visible;
+                animation-delay: 0.2s;
+                animation-name: fadeInUp;
+              "
+                >
+                    <img src='<?php echo e(asset('assets/images/aida.png')); ?>'>
+                    <div class="card-body">
+
+                        <h6 class="text-muted mt-4">Aida Allahverdi</h6>
+                        <h4 class="my-3 f-w-600">ProjectManager</h4>
+                        <p class="mb-0">
+                            Skills: HTML, CSS, JavaScript, Python
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <div
+                    class="card wow animate__fadeInUp"
+                    data-wow-delay="0.6s"
+                    style="
+                visibility: visible;
+                animation-delay: 0.2s;
+                animation-name: fadeInUp;
+              "
+                >
+                    <img src='<?php echo e(asset('assets/images/amir.png')); ?>'>
+                    <div class="card-body">
+
+                        <h6 class="text-muted mt-4">Amirreza Allahverdi</h6>
+                        <h4 class="my-3 f-w-600">Developer</h4>
+                        <p class="mb-0">
+                            Skills: HTML, CSS, JavaScript, Python,Blockchain, Solidity, Redhat, Javascripts
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <div
+                    class="card wow animate__fadeInUp"
+                    data-wow-delay="0.8s"
+                    style="
+                visibility: visible;
+                animation-delay: 0.2s;
+                animation-name: fadeInUp;
+              "
+                >
+                    <img src='<?php echo e(asset('assets/images/fabrizio.png')); ?>'>
+                    <div class="card-body">
+
+                        <h6 class="text-muted mt-4">Fabrizio Marino</h6>
+                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <p class="mb-0">
+                            Skills: HTML, CSS, JavaScript, Python
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <div
+                    class="card wow animate__fadeInUp"
+                    data-wow-delay="0.8s"
+                    style="
+                visibility: visible;
+                animation-delay: 0.2s;
+                animation-name: fadeInUp;
+              "
+                >
+                    <img src='<?php echo e(asset('assets/images/daniela.png')); ?>'>
+                    <div class="card-body">
+
+                        <h6 class="text-muted mt-4">Daniela Andrei</h6>
+                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <p class="mb-0">
+                            Skills: HTML, CSS, JavaScript, Python
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <div
+                    class="card wow animate__fadeInUp"
+                    data-wow-delay="0.8s"
+                    style="
+                visibility: visible;
+                animation-delay: 0.2s;
+                animation-name: fadeInUp;
+              "
+                >
+                    <img src='<?php echo e(asset('assets/images/marco.png')); ?>'>
+                    <div class="card-body">
+
+                        <h6 class="text-muted mt-4">Marco Aquapendente</h6>
+                        <h4 class="my-3 f-w-600">Crypto Consultant</h4>
+                        <p class="mb-0">
+                            Skills: HTML, CSS, JavaScript, Python
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center pt-sm-5 feature-mobile-screen">
+            <a class="btn px-sm-5 btn-primary me-sm-3 " href="<?php echo e(route('login')); ?>">Login Now</a>
+
         </div>
     </div>
 </section>
@@ -680,19 +775,20 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-12">
-                <?php if($settings['cust_darklayout'] && $settings['cust_darklayout'] == 'on' ): ?>
+                <img src="<?php echo e(asset('assets/images/fintechcoin.png')); ?>" alt="logo" width="40%"/>
 
-                    <img src="<?php echo e($logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png')); ?>"
-                         alt="logo" style="width: 150px;" >
-                <?php else: ?>
 
-                    <img src="<?php echo e($logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png')); ?>"
-                         alt="logo" style="width: 150px;" >
-                <?php endif; ?>
+
+
+
+
+
+
+
             </div>
             <div class="col-lg-6 col-sm-12 text-end">
 
-                <p class="text-body">Copyright © 2022 | Design By ERPGo</p>
+                <p class="text-body">Copyright © 2023 | Design By FintechCoin</p>
             </div>
         </div>
     </div>
