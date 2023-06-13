@@ -86,14 +86,14 @@
         <nav class="navbar navbar-expand-md navbar-light default">
             <div class="container-fluid pe-2">
                 <a class="navbar-brand" href="#">
-{{--                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="logo"/>--}}
-                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )
-                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"
-                             alt="{{ config('app.name', 'ERPGo-SaaS') }}" class="logo w-50">
-                    @else
-                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"
-                             alt="{{ config('app.name', 'ERPGo-SaaS') }}" class="logo w-50">
-                    @endif
+                    <img src="{{ asset('assets/images/fintechcoin.png') }}" alt="logo" width="40%"/>
+{{--                    @if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' )--}}
+{{--                        <img src="{{ $logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png') }}"--}}
+{{--                             alt="{{ config('app.name', 'ERPGo-SaaS') }}" class="logo w-50">--}}
+{{--                    @else--}}
+{{--                        <img src="{{ $logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') }}"--}}
+{{--                             alt="{{ config('app.name', 'ERPGo-SaaS') }}" class="logo w-50">--}}
+{{--                    @endif--}}
                 </a>
                 <button
                     class="navbar-toggler"
@@ -153,7 +153,7 @@
                 <div class="row">
                     <div class="col-6">
                         <p class="">
-                            {{(Utility::getValByName('footer_text')) ? Utility::getValByName('footer_text') :  __('Copyright ERPGO') }} {{ date('Y') }}
+                            {{(Utility::getValByName('footer_text')) ? Utility::getValByName('footer_text') :  __('Copyright FintechCoin') }} {{ date('Y') }}
                         </p>
                     </div>
 

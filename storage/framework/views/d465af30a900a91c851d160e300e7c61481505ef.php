@@ -694,7 +694,7 @@
                         <h6 class="text-muted mt-4">Amirreza Allahverdi</h6>
                         <h4 class="my-3 f-w-600">Developer</h4>
                         <p class="mb-0">
-                            Skills: HTML, CSS, JavaScript, Python,Blockchain, Solidity, Redhat, Javascripts
+                            Skills: HTML, CSS, JavaScript, Python,Blockchain, Solidity, Redhat, Javascript
                         </p>
                     </div>
                 </div>
@@ -713,9 +713,9 @@
                     <div class="card-body">
 
                         <h6 class="text-muted mt-4">Fabrizio Marino</h6>
-                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <h5 class="my-3 f-w-600">BUSINESS DEVELOPEMENT EXECUTIVE</h5>
                         <p class="mb-0">
-                            Skills: HTML, CSS, JavaScript, Python
+                            Sales and external relations
                         </p>
                     </div>
                 </div>
@@ -734,9 +734,9 @@
                     <div class="card-body">
 
                         <h6 class="text-muted mt-4">Daniela Andrei</h6>
-                        <h4 class="my-3 f-w-600">Feature</h4>
+                        <h5 class="my-3 f-w-600">Business development Manager</h5>
                         <p class="mb-0">
-                            Skills: HTML, CSS, JavaScript, Python
+                            business and organizational management
                         </p>
                     </div>
                 </div>
@@ -757,7 +757,7 @@
                         <h6 class="text-muted mt-4">Marco Aquapendente</h6>
                         <h4 class="my-3 f-w-600">Crypto Consultant</h4>
                         <p class="mb-0">
-                            Skills: HTML, CSS, JavaScript, Python
+                            Consultanting of crypto and finance
                         </p>
                     </div>
                 </div>

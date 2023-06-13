@@ -86,14 +86,14 @@
         <nav class="navbar navbar-expand-md navbar-light default">
             <div class="container-fluid pe-2">
                 <a class="navbar-brand" href="#">
+                    <img src="<?php echo e(asset('assets/images/fintechcoin.png')); ?>" alt="logo" width="40%"/>
 
-                    <?php if($mode_setting['cust_darklayout'] && $mode_setting['cust_darklayout'] == 'on' ): ?>
-                        <img src="<?php echo e($logo . '/' . (isset($company_logos) && !empty($company_logos) ? $company_logos : 'logo-dark.png')); ?>"
-                             alt="<?php echo e(config('app.name', 'ERPGo-SaaS')); ?>" class="logo w-50">
-                    <?php else: ?>
-                        <img src="<?php echo e($logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png')); ?>"
-                             alt="<?php echo e(config('app.name', 'ERPGo-SaaS')); ?>" class="logo w-50">
-                    <?php endif; ?>
+
+
+
+
+
+
                 </a>
                 <button
                     class="navbar-toggler"
@@ -153,7 +153,7 @@
                 <div class="row">
                     <div class="col-6">
                         <p class="">
-                            <?php echo e((Utility::getValByName('footer_text')) ? Utility::getValByName('footer_text') :  __('Copyright ERPGO')); ?> <?php echo e(date('Y')); ?>
+                            <?php echo e((Utility::getValByName('footer_text')) ? Utility::getValByName('footer_text') :  __('Copyright FintechCoin')); ?> <?php echo e(date('Y')); ?>
 
                         </p>
                     </div>
