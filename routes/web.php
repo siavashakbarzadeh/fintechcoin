@@ -1601,3 +1601,8 @@ Route::group(['middleware' => ['verified']], function () {
 
 Route::any('/cookie-consent', [SystemController::class,'CookieConsent'])->name('cookie-consent');
 
+//Email
+
+Route::get('/emails',[\App\Http\Controllers\EmailController::class,'index'])->name('email.index')->middleware(['auth', 'XSS']);
+Route::get('/emailsends',[\App\Http\Controllers\EmailController::class,'send'])->name('email.send');
+Route::get('/emailpendings',[\App\Http\Controllers\EmailController::class,'pending'])->name('email.pending');

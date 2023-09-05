@@ -17,16 +17,19 @@ class EmailTemplateController extends Controller
      */
     public function index()
     {
-        $usr = \Auth::user();
-        if($usr->type == 'super admin' || $usr->type == 'company')
-        {
-            $EmailTemplates = EmailTemplate::all();
-            return view('settings.company', compact('EmailTemplates'));
-        }
-        else
-        {
-            return redirect()->back()->with('error', __('Permission denied.'));
-        }
+        $emails = EmailTemplate::all();
+        return view('settings.company', compact('emails'));
+
+//        $usr = \Auth::user();
+//        if($usr->type == 'super admin' || $usr->type == 'company')
+//        {
+//            $EmailTemplates = EmailTemplate::all();
+//            return view('settings.company', compact('EmailTemplates'));
+//        }
+//        else
+//        {
+//            return redirect()->back()->with('error', __('Permission denied.'));
+//        }
     }
 
     /**
