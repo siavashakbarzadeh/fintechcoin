@@ -24,6 +24,196 @@
                 filter: true
             })
         })
+        (function($){
+            "use strict";
+            {{--selectSearch("{{route('admin.email.select2')}}")--}}
+            selectSearch("")
+
+            $('.keywords').select2({
+                tags: true,
+                tokenSeparators: [',']
+            });
+
+
+            function selectSearch(route){
+                $(`.emailcollect`).select2({
+                    allowClear: false,
+                    tags: true,
+                    tokenSeparators: [' '],
+                    placeholder: '',
+                    ajax: {
+                        url: route,
+                        dataType: 'json',
+                        delay: 250,
+                        data: function(params) {
+                            return {
+                                term: params.term || '',
+                                page: params.page || 1
+                            }
+                        },
+                        cache: true
+                    }
+                });
+            }
+
+            // if($('.checked_opt').is(":checked")) {
+            //     $("#optional_info").show(300);
+            // } else {
+            //     $("#optional_info").hide(200);
+            // }
+            // $(".checked_opt").click(function() {
+            //     if($(this).is(":checked")) {
+            //         $("#optional_info").show(300);
+            //     } else {
+            //         $("#optional_info").hide(200);
+            //     }
+            // });
+
+            $('input[type=radio][name=schedule]').on('change', function(){
+                if(this.value == 2){
+                    const __ =  "{{ __('Schedule Date & Time') }}"
+                    var html = `
+	        		<label for="shedule_date" class="form-label">${__}<sup class="text-danger">*</sup></label>
+					<input type="datetime-local" value= "{{old("shedule_date")}}" name="shedule_date" id="shedule_date" class="form-control" required="">`;
+                    $('.scheduledate').append(html);
+                }else{
+                    $('.scheduledate').empty();
+                }
+            });
+
+
+            $(document).ready(function() {
+                // $('#message').summernote({
+                //     placeholder: '{{ __('Write Here Email Content &  For Mention Name Use ')}}'+'{'+'{name}'+"}",
+                //     tabsize: 2,
+                //     width:'100%',
+                //     height: 200,
+                //     toolbar: [
+                //         ['fontname', ['fontname']],
+                //         ['style', ['style']],
+                //         ['fontsize', ['fontsizeunit']],
+                //         ['font', ['bold', 'underline', 'clear']],
+                //         ['height', ['height']],
+                //         ['color', ['color']],
+                //         ['para', ['ul', 'ol', 'paragraph']],
+                //         ['table', ['table']],
+                //         ['insert', ['link', 'picture', 'video']],
+                //         ['view', ['codeview']],
+                //     ],
+                //     codeviewFilterRegex: 'custom-regex'
+                // });
+                CKEDITOR.ClassicEditor.create(document.getElementById("message"), {
+                    placeholder: document.getElementById("message").getAttribute("placeholder"),
+                    toolbar: {
+                        items: [
+                            'heading',
+                            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
+                            'alignment', '|',
+                            'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', 'removeFormat', 'findAndReplace', '-',
+                            'bulletedList', 'numberedList', '|',
+                            'outdent', 'indent', '|',
+                            'undo', 'redo',
+                            'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', '|',
+                            'horizontalLine', 'pageBreak', '|',
+                            'sourceEditing'
+                        ],
+                        shouldNotGroupWhenFull: true
+                    },
+                    list: {
+                        properties: {
+                            styles: true,
+                            startIndex: true,
+                            reversed: true
+                        }
+                    },
+                    heading: {
+                        options: [
+                            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                            { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+                            { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+                            { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+                            { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
+                        ]
+                    },
+                    fontFamily: {
+                        options: [
+                            'default',
+                            'Arial, Helvetica, sans-serif',
+                            'Courier New, Courier, monospace',
+                            'Georgia, serif',
+                            'Lucida Sans Unicode, Lucida Grande, sans-serif',
+                            'Tahoma, Geneva, sans-serif',
+                            'Times New Roman, Times, serif',
+                            'Trebuchet MS, Helvetica, sans-serif',
+                            'Verdana, Geneva, sans-serif'
+                        ],
+                        supportAllValues: true
+                    },
+                    fontSize: {
+                        options: [10, 12, 14, 'default', 18, 20, 22],
+                        supportAllValues: true
+                    },
+                    htmlSupport: {
+                        allow: [
+                            {
+                                name: /.*/,
+                                attributes: true,
+                                classes: true,
+                                styles: true
+                            }
+                        ]
+                    },
+                    htmlEmbed: {
+                        showPreviews: true
+                    },
+                    link: {
+                        decorators: {
+                            addTargetToExternalLinks: true,
+                            defaultProtocol: 'https://',
+                            toggleDownloadable: {
+                                mode: 'manual',
+                                label: 'Downloadable',
+                                attributes: {
+                                    download: 'file'
+                                }
+                            }
+                        }
+                    },
+                    mention: {
+                        feeds: [
+                            {
+                                marker: '@',
+                                feed: [
+                                    '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
+                                    '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
+                                    '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
+                                    '@sugar', '@sweet', '@topping', '@wafer'
+                                ],
+                                minimumCharacters: 1
+                            }
+                        ]
+                    },
+                    removePlugins: [
+                        'CKBox',
+                        'CKFinder',
+                        'EasyImage',
+                        'RealTimeCollaborativeComments',
+                        'RealTimeCollaborativeTrackChanges',
+                        'RealTimeCollaborativeRevisionHistory',
+                        'PresenceList',
+                        'Comments',
+                        'TrackChanges',
+                        'TrackChangesData',
+                        'RevisionHistory',
+                        'Pagination',
+                        'WProofreader',
+                        'MathType'
+                    ]
+                });
+            });
+        })(jQuery);
     </script>
 @endpush
 @section('breadcrumb')
@@ -152,200 +342,4 @@
 	</div>
 </section>
 @endsection
-
-
-@push('scriptpush')
-<script>
-	(function($){
-		"use strict";
-		{{--selectSearch("{{route('admin.email.select2')}}")--}}
-		selectSearch("")
-
-		$('.keywords').select2({
-			tags: true,
-			tokenSeparators: [',']
-		});
-
-
-		function selectSearch(route){
-			$(`.emailcollect`).select2({
-            allowClear: false,
-            tags: true,
-            tokenSeparators: [' '],
-            placeholder: '',
-            ajax: {
-                url: route,
-                dataType: 'json',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        term: params.term || '',
-                        page: params.page || 1
-                    }
-                },
-                cache: true
-            }
-          });
-		}
-
-		// if($('.checked_opt').is(":checked")) {
-	    //     $("#optional_info").show(300);
-	    // } else {
-	    //     $("#optional_info").hide(200);
-	    // }
-		// $(".checked_opt").click(function() {
-		//     if($(this).is(":checked")) {
-		//         $("#optional_info").show(300);
-		//     } else {
-		//         $("#optional_info").hide(200);
-		//     }
-		// });
-
-		$('input[type=radio][name=schedule]').on('change', function(){
-	        if(this.value == 2){
-                const __ =  "{{ __('Schedule Date & Time') }}"
-	        	var html = `
-	        		<label for="shedule_date" class="form-label">${__}<sup class="text-danger">*</sup></label>
-					<input type="datetime-local" value= "{{old("shedule_date")}}" name="shedule_date" id="shedule_date" class="form-control" required="">`;
-	        	$('.scheduledate').append(html);
-	        }else{
-	        	$('.scheduledate').empty();
-	        }
-	    });
-
-
-		$(document).ready(function() {
-	        // $('#message').summernote({
-		    //     placeholder: '{{ __('Write Here Email Content &  For Mention Name Use ')}}'+'{'+'{name}'+"}",
-		    //     tabsize: 2,
-		    //     width:'100%',
-		    //     height: 200,
-		    //     toolbar: [
-			//         ['fontname', ['fontname']],
-			//         ['style', ['style']],
-			//         ['fontsize', ['fontsizeunit']],
-			//         ['font', ['bold', 'underline', 'clear']],
-			//         ['height', ['height']],
-			//         ['color', ['color']],
-			//         ['para', ['ul', 'ol', 'paragraph']],
-			//         ['table', ['table']],
-			//         ['insert', ['link', 'picture', 'video']],
-			//         ['view', ['codeview']],
-		    //     ],
-		    //     codeviewFilterRegex: 'custom-regex'
-		    // });
-			CKEDITOR.ClassicEditor.create(document.getElementById("message"), {
-		        placeholder: document.getElementById("message").getAttribute("placeholder"),
-		        toolbar: {
-		          items: [
-		            'heading',
-		            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
-		            'alignment', '|',
-		            'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', 'removeFormat', 'findAndReplace', '-',
-		            'bulletedList', 'numberedList', '|',
-		            'outdent', 'indent', '|',
-		            'undo', 'redo',
-		            'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', '|',
-		            'horizontalLine', 'pageBreak', '|',
-		            'sourceEditing'
-		          ],
-		          shouldNotGroupWhenFull: true
-		        },
-		        list: {
-		          properties: {
-		            styles: true,
-		            startIndex: true,
-		            reversed: true
-		          }
-		        },
-		        heading: {
-		          options: [
-		            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-		            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-		            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-		            { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-		            { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
-		            { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
-		            { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
-		          ]
-		        },
-		        fontFamily: {
-		          options: [
-		            'default',
-		            'Arial, Helvetica, sans-serif',
-		            'Courier New, Courier, monospace',
-		            'Georgia, serif',
-		            'Lucida Sans Unicode, Lucida Grande, sans-serif',
-		            'Tahoma, Geneva, sans-serif',
-		            'Times New Roman, Times, serif',
-		            'Trebuchet MS, Helvetica, sans-serif',
-		            'Verdana, Geneva, sans-serif'
-		          ],
-		          supportAllValues: true
-		        },
-		        fontSize: {
-		          options: [10, 12, 14, 'default', 18, 20, 22],
-		          supportAllValues: true
-		        },
-		        htmlSupport: {
-		          allow: [
-		            {
-		              name: /.*/,
-		              attributes: true,
-		              classes: true,
-		              styles: true
-		            }
-		          ]
-		        },
-		        htmlEmbed: {
-		          showPreviews: true
-		        },
-		        link: {
-		          decorators: {
-		            addTargetToExternalLinks: true,
-		            defaultProtocol: 'https://',
-		            toggleDownloadable: {
-		              mode: 'manual',
-		              label: 'Downloadable',
-		              attributes: {
-		                download: 'file'
-		              }
-		            }
-		          }
-		        },
-		        mention: {
-		          feeds: [
-		            {
-		              marker: '@',
-		              feed: [
-		                '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
-		                '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
-		                '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
-		                '@sugar', '@sweet', '@topping', '@wafer'
-		              ],
-		              minimumCharacters: 1
-		            }
-		          ]
-		        },
-		        removePlugins: [
-		          'CKBox',
-		          'CKFinder',
-		          'EasyImage',
-		          'RealTimeCollaborativeComments',
-		          'RealTimeCollaborativeTrackChanges',
-		          'RealTimeCollaborativeRevisionHistory',
-		          'PresenceList',
-		          'Comments',
-		          'TrackChanges',
-		          'TrackChangesData',
-		          'RevisionHistory',
-		          'Pagination',
-		          'WProofreader',
-		          'MathType'
-		        ]
-		    });
-	    });
-	})(jQuery);
-</script>
-@endpush
 
