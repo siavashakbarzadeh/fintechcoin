@@ -45,6 +45,8 @@ class EmailController extends Controller
 
     public function send(EmailRequest $request)
     {
+        $email=Email::first();
+        dd($email);
         $email = Email::query()->create([
             'user_id' => $request->user()->id,
             'subject' => $request->subject,
