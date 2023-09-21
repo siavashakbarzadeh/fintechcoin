@@ -42,7 +42,7 @@ class EmailController extends Controller
 
     public function send(EmailRequest $request)
     {
-        dd($request->all());
+
     }
     public function pending()
     {
