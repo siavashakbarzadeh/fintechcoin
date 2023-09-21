@@ -23,13 +23,13 @@
     <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
     <script>
+        $('input[name="schedule"]').change(function (e) {
+            const val= parseInt($(e.target).val());
+            console.log(val)
+            if(val === 1) $('.schedule-date').hide();
+            else $('.schedule-date').show();
+        });
         $(function () {
-            $('input[name="schedule"]').change(function (e) {
-                const val= parseInt($(e.target).val());
-                console.log(val)
-                if(val === 1) $('.schedule-date').hide();
-                else $('.schedule-date').show();
-            });
             $('select').multipleSelect({
                 placeholder:"",
                 filter: true
