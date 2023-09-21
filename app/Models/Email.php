@@ -26,6 +26,8 @@ class Email extends Model
 
     public function users()
     {
-        return $this->morphedByMany(User::class,'emailable');
+        return $this->morphedByMany(User::class,'emailable')
+            ->withPivot(['email','sent_at'])
+            ->using(Emailable::class);
     }
 }
