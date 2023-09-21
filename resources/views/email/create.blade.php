@@ -266,7 +266,14 @@
 											</div>
 										</div>
 					          		</div>
-					          		<div class="col-md-6 scheduledate"></div>
+					          		<div class="col-md-6 schedule-date">
+                                        <label class="d-flex">
+                                            <input type="date" class="">
+                                        </label>
+                                        <label class="d-flex">
+                                            <input type="time" class="">
+                                        </label>
+                                    </div>
 				          		</div>
 				          	</div>
 				        </div>
