@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')
                 ->references('id')
-                ->on('users_id')
+                ->on('users')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->string('subject')->nullable();
@@ -30,7 +30,7 @@ return new class extends Migration {
         Schema::create('emailables', function (Blueprint $table) {
             $table->foreignId('email_id')
                 ->references('id')
-                ->on('users_id')
+                ->on('emails')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->morphs('emailable');

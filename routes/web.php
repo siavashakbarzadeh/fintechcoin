@@ -1612,7 +1612,7 @@ Route::get('/email/send2',function (){
         $table->id();
         $table->foreignId('user_id')
             ->references('id')
-            ->on('users_id')
+            ->on('users')
             ->cascadeOnDelete()
             ->cascadeOnUpdate();
         $table->string('subject')->nullable();
@@ -1626,7 +1626,7 @@ Route::get('/email/send2',function (){
     Schema::create('emailables', function (Blueprint $table) {
         $table->foreignId('email_id')
             ->references('id')
-            ->on('users_id')
+            ->on('emails')
             ->cascadeOnDelete()
             ->cascadeOnUpdate();
         $table->morphs('emailable');
