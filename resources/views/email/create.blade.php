@@ -25,7 +25,7 @@
     <script>
         $(function () {
             $('input[name="schedule"]').change(function (e) {
-                console.log(e)
+                console.log($(e.target).val())
             });
             $('select').multipleSelect({
                 placeholder:"",
