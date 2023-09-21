@@ -4,6 +4,7 @@ namespace App\Http\Requests\Email;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EmailRequest extends FormRequest
 {
@@ -30,8 +31,8 @@ class EmailRequest extends FormRequest
             'from_name' => ['nullable', 'string'],
             'message' => ['required', 'string'],
             'now' => ['nullable', 'boolean'],
-            'schedule_date' => ['nullable', 'date'],
-            'schedule_time' => ['nullable','date_format:H:i'],
+            'schedule_date' => [Rule::requiredIf($this->now), 'date'],
+            'schedule_time' => [Rule::requiredIf($this->now),'date_format:H:i'],
         ];
     }
 

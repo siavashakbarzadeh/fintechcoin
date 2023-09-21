@@ -271,10 +271,16 @@
 					          		<div class="col-md-6 schedule-date" style="display:none;">
                                         <div class="d-flex gap-2 align-items-center w-100">
                                             <label class="d-flex">
-                                                <input type="date" name="schedule_date" class="form-control">
+                                                <input type="date" name="schedule_date" value="{{ old('schedule_date') }}" class="form-control">
+                                                @error('schedule_date')
+                                                <span class="text-sm text-danger">{{ $message }}</span>
+                                                @enderror
                                             </label>
                                             <label class="d-flex">
-                                                <input type="time" name="schedule_time" class="form-control">
+                                                <input type="time" name="schedule_time" value="{{ old('schedule_time') }}" class="form-control">
+                                                @error('schedule_time')
+                                                <span class="text-sm text-danger">{{ $message }}</span>
+                                                @enderror
                                             </label>
                                         </div>
                                     </div>
