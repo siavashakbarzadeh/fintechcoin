@@ -54,8 +54,7 @@
 						    <h6 class="card-header">{{ __('Recipient Set In Different Ways')}}</h6>
 						    <div class="card-body">
 					    		<div class="row">
-
-									<div class="col-md-4 mb-2">
+									<div class="col-md-6 mb-2">
 										<div class="mb-3">
                                             <div class="input-group input-group-merge">
                                                 <select name="emails[]" multiple="multiple" class="multiple-select">
@@ -66,43 +65,6 @@
                                             </div>
 										</div>
 									</div>
-
-					          		<div class="col-md-4 mb-2">
-					            		<label class="form-label">
-					            			{{ __('From Group')}}
-					            		</label>
-					            		<div class="input-group input-group-merge">
-								            <select class="form-control keywords" name="email_group_id[]" id="group" multiple="multiple">
-												<option value="" disabled="">{{ __('Select One')}}
-
-                                                </option>
-{{--												@foreach($emailGroups as $group)--}}
-{{--													<option--}}
-{{--													@if (old("email_group_id")){{ (in_array($group->id, old("email_group_id")) ? "selected":"") }}@endif--}}
-{{--													value="{{$group->id}}">{{$group->name}}</option>--}}
-{{--												@endforeach--}}
-											</select>
-					            		</div>
-					            		<div class="form-text">
-					            			{{ __('Can be select single or multiple group')}}
-										</div>
-					          		</div>
-					          		<div class="col-md-4 mb-2">
-					            		<label class="form-label">
-					            			{{ __('Import File')}}
-					            		</label>
-					            		<div class="input-group input-group-merge">
-					              			<input class="form-control" type="file" name="file" id="file">
-					            		</div>
-					            		<div class="form-text">
-					            			{{ __('Download Sample: ')}}
-{{--                                            --}}
-{{--											<a href="{{route('demo.email.file.downlode', 'csv')}}"><i class="fa fa-download" aria-hidden="true"></i> {{ __('csv')}}, </a>--}}
-{{--											--}}
-{{--                                            <a href="{{route('demo.email.file.downlode', 'xlsx')}}"><i class="fa fa-download" aria-hidden="true"></i> {{ __('xlsx')}}</a>--}}
-
-                                        </div>
-					          		</div>
 					    		</div>
 					      	</div>
 					    </div>
