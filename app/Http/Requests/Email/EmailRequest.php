@@ -29,6 +29,7 @@ class EmailRequest extends FormRequest
             'emails' => ['required', 'array', 'min:1', 'exists:users,email'],
             'subject' => ['nullable', 'string'],
             'from_name' => ['nullable', 'string'],
+            'reply_to_email' => ['nullable', 'string'],
             'message' => ['required', 'string'],
             'now' => ['nullable', 'boolean'],
             'schedule_date' => [!Rule::requiredIf($this->now), 'date'],

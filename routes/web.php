@@ -1608,28 +1608,6 @@ Route::get('/emails',[\App\Http\Controllers\EmailController::class,'index'])->na
 Route::get('/email/send',[\App\Http\Controllers\EmailController::class,'showFormSend'])->name('email.send');
 Route::post('/email/send',[\App\Http\Controllers\EmailController::class,'send']);
 Route::get('/email/send2',function (){
-    Schema::create('emails', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')
-            ->references('id')
-            ->on('users')
-            ->cascadeOnDelete()
-            ->cascadeOnUpdate();
-        $table->string('subject')->nullable();
-        $table->string('from_name')->nullable();
-        $table->string('reply_to_email')->nullable();
-        $table->longText('message');
-        $table->timestamp('sent_at')->nullable();
-        $table->timestamp('canceled_at')->nullable();
-        $table->timestamps();
-    });
-    Schema::create('emailables', function (Blueprint $table) {
-        $table->foreignId('email_id')
-            ->references('id')
-            ->on('emails')
-            ->cascadeOnDelete()
-            ->cascadeOnUpdate();
-        $table->morphs('emailable');
-    });
+
 });
 Route::get('/emailpendings',[\App\Http\Controllers\EmailController::class,'pending'])->name('email.pending');

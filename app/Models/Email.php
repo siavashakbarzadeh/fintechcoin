@@ -15,7 +15,6 @@ class Email extends Model
         'from_name',
         'reply_to_email',
         'message',
-        'message',
         'sent_at',
         'canceled_at',
     ];

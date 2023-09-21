@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Email\EmailRequest;
 use App\Models\Customer;
+use App\Models\Email;
 use App\Models\EmailTemplate;
 use App\Models\EmailTemplateLang;
 use App\Models\User;
@@ -34,16 +35,25 @@ class EmailController extends Controller
 //            return redirect()->back()->with('error', __('Permission denied.'));
 //        }
     }
+
     public function showFormSend()
     {
-        $customers=User::select(['name','email'])->get();
-        return view('email.create',compact('customers') );
+        $customers = User::select(['name', 'email'])->get();
+        return view('email.create', compact('customers'));
     }
 
     public function send(EmailRequest $request)
     {
-
+        dd($request->all());
+        $email = Email::query()->create([
+            'user_id' => $request->user()->id,
+            'subject' => $request->subject,
+            'from_name' => $request->from_name,
+            'reply_to_email' => $request->reply_to_email,
+            'message' => $request->message,
+        ]);
     }
+
     public function pending()
     {
         $emails = EmailTemplate::all();
@@ -52,6 +62,7 @@ class EmailController extends Controller
 //        $emailLogs = EmailLog::where('status',EmailLog::PENDING)->orderBy('id', 'DESC')->with('sender','user')->paginate(paginateNumber());
 //        return view('admin.email.index', compact('title', 'emailLogs'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -62,7 +73,7 @@ class EmailController extends Controller
 
 //        if(\Auth::user()->can('Create Email Template'))
 //        {
-            return view('email_templates.create');
+        return view('email_templates.create');
 //        }
 //        else
 //        {
@@ -85,25 +96,24 @@ class EmailController extends Controller
 
 //        if(\Auth::user()->can('Create Email Template'))
 //        {
-            $validator = \Validator::make(
-                $request->all(), [
-                                   'name' => 'required',
-                               ]
-            );
+        $validator = \Validator::make(
+            $request->all(), [
+                'name' => 'required',
+            ]
+        );
 
-            if($validator->fails())
-            {
-                $messages = $validator->getMessageBag();
+        if ($validator->fails()) {
+            $messages = $validator->getMessageBag();
 
-                return redirect()->back()->with('error', $messages->first());
-            }
+            return redirect()->back()->with('error', $messages->first());
+        }
 
-            $EmailTemplate             = new EmailTemplate();
-            $EmailTemplate->name       = $request->name;
-            $EmailTemplate->created_by = $usr->id;
-            $EmailTemplate->save();
+        $EmailTemplate = new EmailTemplate();
+        $EmailTemplate->name = $request->name;
+        $EmailTemplate->created_by = $usr->id;
+        $EmailTemplate->save();
 
-            return redirect()->route('email_template.index')->with('success', __('Email Template successfully created.'));
+        return redirect()->route('email_template.index')->with('success', __('Email Template successfully created.'));
 //        }
 //        else
 //        {
@@ -143,28 +153,27 @@ class EmailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
 
 
 //        if(\Auth::user()->can('Edit Email Template'))
 //        {
-            $validator = \Validator::make(
-                $request->all(), [
-                                    'from' => 'required',
-                                    'subject' => 'required',
-                                    'content' => 'required',
-                               ]
-            );
+        $validator = \Validator::make(
+            $request->all(), [
+                'from' => 'required',
+                'subject' => 'required',
+                'content' => 'required',
+            ]
+        );
 
-            if($validator->fails())
-            {
-                $messages = $validator->getMessageBag();
+        if ($validator->fails()) {
+            $messages = $validator->getMessageBag();
 
-                return redirect()->back()->with('error', $messages->first());
-            }
+            return redirect()->back()->with('error', $messages->first());
+        }
 
-        $emailTemplate       = EmailTemplate::where('id',$id)->first();
+        $emailTemplate = EmailTemplate::where('id', $id)->first();
 //            dd($emailTemplate);
         $emailTemplate->from = $request->from;
 
@@ -173,17 +182,14 @@ class EmailController extends Controller
         $emailLangTemplate = EmailTemplateLang::where('parent_id', '=', $id)->where('lang', '=', $request->lang)->first();
 
         // if record not found then create new record else update it.
-        if(empty($emailLangTemplate))
-        {
-            $emailLangTemplate            = new EmailTemplateLang();
+        if (empty($emailLangTemplate)) {
+            $emailLangTemplate = new EmailTemplateLang();
             $emailLangTemplate->parent_id = $id;
-            $emailLangTemplate->lang      = $request['lang'];
-            $emailLangTemplate->subject   = $request['subject'];
-            $emailLangTemplate->content   = $request['content'];
+            $emailLangTemplate->lang = $request['lang'];
+            $emailLangTemplate->subject = $request['subject'];
+            $emailLangTemplate->content = $request['content'];
             $emailLangTemplate->save();
-        }
-        else
-        {
+        } else {
             $emailLangTemplate->subject = $request['subject'];
             $emailLangTemplate->content = $request['content'];
             $emailLangTemplate->save();
@@ -219,37 +225,31 @@ class EmailController extends Controller
     {
 
 
-        if(\Auth::user()->type == 'super admin')
-        {
-            $languages         = Utility::languages();
-            $emailTemplate     = EmailTemplate::first();
+        if (\Auth::user()->type == 'super admin') {
+            $languages = Utility::languages();
+            $emailTemplate = EmailTemplate::first();
 //             $currEmailTempLang = EmailTemplateLang::where('lang', $lang)->first();
             $currEmailTempLang = EmailTemplateLang::where('parent_id', '=', $id)->where('lang', $lang)->first();
 
-            if(!isset($currEmailTempLang) || empty($currEmailTempLang))
-            {
+            if (!isset($currEmailTempLang) || empty($currEmailTempLang)) {
 //                $currEmailTempLang       = EmailTemplateLang::where('parent_id', '=', $id)->where('lang', 'en')->first();
                 $currEmailTempLang = EmailTemplateLang::where('lang', $lang)->first();
 
                 $currEmailTempLang->lang = $lang;
             }
 
-            if(\Auth::user()->type == 'super admin')
-            {
-                $emailTemplate     = EmailTemplate::where('id', '=', $id)->first();
-            }
-            else {
+            if (\Auth::user()->type == 'super admin') {
+                $emailTemplate = EmailTemplate::where('id', '=', $id)->first();
+            } else {
 
-                $settings         = Utility::settings();
-                $emailTemplate     = $settings['company_name'];
+                $settings = Utility::settings();
+                $emailTemplate = $settings['company_name'];
             }
             $EmailTemplates = EmailTemplate::all();
 
 
-            return view('email_templates.show', compact('emailTemplate', 'languages', 'currEmailTempLang','EmailTemplates'));
-        }
-        else
-        {
+            return view('email_templates.show', compact('emailTemplate', 'languages', 'currEmailTempLang', 'EmailTemplates'));
+        } else {
             return redirect()->back()->with('error', 'Permission denied.');
         }
     }
@@ -261,45 +261,41 @@ class EmailController extends Controller
 
 //        if(\Auth::user()->can('Edit Email Template Lang'))
 //        {
-            $validator = \Validator::make(
-                $request->all(), [
-                                   'subject' => 'required',
-                                   'content' => 'required',
-                               ]
-            );
+        $validator = \Validator::make(
+            $request->all(), [
+                'subject' => 'required',
+                'content' => 'required',
+            ]
+        );
 
-            if($validator->fails())
-            {
-                $messages = $validator->getMessageBag();
+        if ($validator->fails()) {
+            $messages = $validator->getMessageBag();
 
-                return redirect()->back()->with('error', $messages->first());
-            }
+            return redirect()->back()->with('error', $messages->first());
+        }
 
-            $emailLangTemplate = EmailTemplateLang::where('parent_id', '=', $id)->where('lang', '=', $request->lang)->first();
+        $emailLangTemplate = EmailTemplateLang::where('parent_id', '=', $id)->where('lang', '=', $request->lang)->first();
 
-            // if record not found then create new record else update it.
-            if(empty($emailLangTemplate))
-            {
-                $emailLangTemplate            = new EmailTemplateLang();
-                $emailLangTemplate->parent_id = $id;
-                $emailLangTemplate->lang      = $request['lang'];
-                $emailLangTemplate->subject   = $request['subject'];
-                $emailLangTemplate->content   = $request['content'];
-                $emailLangTemplate->save();
-            }
-            else
-            {
-                $emailLangTemplate->subject = $request['subject'];
-                $emailLangTemplate->content = $request['content'];
-                $emailLangTemplate->save();
-            }
+        // if record not found then create new record else update it.
+        if (empty($emailLangTemplate)) {
+            $emailLangTemplate = new EmailTemplateLang();
+            $emailLangTemplate->parent_id = $id;
+            $emailLangTemplate->lang = $request['lang'];
+            $emailLangTemplate->subject = $request['subject'];
+            $emailLangTemplate->content = $request['content'];
+            $emailLangTemplate->save();
+        } else {
+            $emailLangTemplate->subject = $request['subject'];
+            $emailLangTemplate->content = $request['content'];
+            $emailLangTemplate->save();
+        }
 
-            return redirect()->route(
-                'manage.email.language', [
-                                           $id,
-                                           $request->lang,
-                                       ]
-            )->with('success', __('Email Template Detail successfully updated.'));
+        return redirect()->route(
+            'manage.email.language', [
+                $id,
+                $request->lang,
+            ]
+        )->with('success', __('Email Template Detail successfully updated.'));
 //        }
 //        else
 //        {
@@ -314,19 +310,14 @@ class EmailController extends Controller
 
         $usr = \Auth::user();
 
-        if($usr->type == 'super admin' || $usr->type == 'company')
-        {
+        if ($usr->type == 'super admin' || $usr->type == 'company') {
 
             $user_email = UserEmailTemplate::where('id', '=', $id)->where('user_id', '=', $usr->id)->first();
 
-            if(!empty($user_email))
-            {
-                if($request->status == 1)
-                {
+            if (!empty($user_email)) {
+                if ($request->status == 1) {
                     $user_email->is_active = 0;
-                }
-                else
-                {
+                } else {
                     $user_email->is_active = 1;
                 }
 //                dd($user_email->is_active);
@@ -340,9 +331,7 @@ class EmailController extends Controller
                         'success' => __('Status successfully updated!'),
                     ], 200
                 );
-            }
-            else
-            {
+            } else {
                 return response()->json(
                     [
                         'is_success' => false,
