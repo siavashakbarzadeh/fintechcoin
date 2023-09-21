@@ -242,7 +242,7 @@
 					            		</label>
 					            		<div class="input-group">
                                             <label class="w-100 d-block">
-                                                <textarea class="form-control w-100" name="message" id="message">aaa</textarea>
+                                                <textarea class="form-control w-100" name="message" id="message">{!! old('message') !!}</textarea>
                                             </label>
 					            		</div>
 					          		</div>
