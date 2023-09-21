@@ -58,7 +58,7 @@
             @if(\Auth::user()->type != 'client')
                 <ul class="dash-navbar">
                     <li class="dash-item dash-hasmenu">
-                        <a href="" class="dash-link">
+                        <a href="#!" class="dash-link">
                             <span class="dash-micon">
                                 <i class="ti ti-home"></i>
                             </span>
