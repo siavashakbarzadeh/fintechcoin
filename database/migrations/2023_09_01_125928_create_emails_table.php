@@ -35,7 +35,7 @@ return new class extends Migration {
                 ->cascadeOnUpdate();
             $table->string('email');
             $table->morphs('emailable');
-            $table->timestamp('emailable');
+            $table->timestamp('sent_at')->nullable();
         });
     }
 
