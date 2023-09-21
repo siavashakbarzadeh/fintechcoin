@@ -46,7 +46,7 @@
 									<div class="col-md-4 mb-2">
 										<div class="mb-3">
                                             <div class="input-group input-group-merge">
-                                                <select multiple="multiple" class="form-control multiple-select">
+                                                <select multiple="multiple" class="multiple-select">
                                                     <option value="1">January</option>
                                                     <option value="2">February</option>
                                                     <option value="3">March</option>
