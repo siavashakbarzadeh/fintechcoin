@@ -11,7 +11,7 @@
     <script>
         $(function () {
             $('select').multipleSelect({
-                classes: 'form-control',
+                classes: 'w-100',
             })
         })
     </script>
