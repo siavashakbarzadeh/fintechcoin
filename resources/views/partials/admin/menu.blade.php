@@ -34,8 +34,7 @@
             </a>
         </div>
         <div class="navbar-content">
-            <li class="dash-item dash-hasmenu
-                                             ">
+            <li class="dash-item dash-hasmenu">
                 <a href="#!" class="dash-link"><span class="dash-micon"><i class="ti ti-shopping-cart-plus"></i></span><span class="dash-mtext">{{__('Manage Email')}}</span><span class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
                 <ul class="dash-submenu">
 
@@ -58,6 +57,22 @@
             </li>
             @if(\Auth::user()->type != 'client')
                 <ul class="dash-navbar">
+                    <li class="dash-item dash-hasmenu">
+                        <a href="" class="dash-link">
+                            <span class="dash-micon">
+                                <i class="ti ti-home"></i>
+                            </span>
+                            <span class="dash-mtext">aaa</span>
+                            <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+                        </a>
+                        <ul class="dash-submenu">
+                            <li class="dash-item dash-hasmenu">
+                                <a href="" class="dash-link">
+                                    <span class="dash-mtext">{{__('Dashboard')}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!--------------------- Start Dashboard ----------------------------------->
                     @if( Gate::check('show hrm dashboard') || Gate::check('show project dashboard') || Gate::check('show account dashboard') || Gate::check('show crm dashboard') || Gate::check('show pos dashboard'))
                         <li class="dash-item dash-hasmenu
