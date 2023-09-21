@@ -5,12 +5,19 @@
 @endsection
 @push('css-page')
     <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.css">
+    <style>
+        select {
+            width: 100%;
+        }
+    </style>
 @endpush
 @push('script-page')
     <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
     <script>
         $(function () {
-            $('select').multipleSelect()
+            $('select').multipleSelect({
+                placeholder:false
+            })
         })
     </script>
 @endpush
