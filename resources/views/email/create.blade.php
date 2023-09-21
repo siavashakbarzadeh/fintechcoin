@@ -266,7 +266,7 @@
 											</div>
 										</div>
 					          		</div>
-					          		<div class="col-md-6 schedule-date d-flex gap-2">
+					          		<div class="col-md-6 schedule-date d-flex gap-2 align-items-center" style="display:none;">
                                         <label class="d-flex">
                                             <input type="date" class="form-control">
                                         </label>
