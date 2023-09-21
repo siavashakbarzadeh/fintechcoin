@@ -25,7 +25,9 @@
     <script>
         $(function () {
             $('input[name="schedule"]').change(function (e) {
-                console.log($(e.target).val())
+                const val= $(e.target).val();
+                if(val === 1) $('.schedule-date').hide();
+                else $('.schedule-date').show();
             });
             $('select').multipleSelect({
                 placeholder:"",
