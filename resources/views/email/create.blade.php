@@ -6,6 +6,14 @@
 @push('css-page')
     <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.css">
 @endpush
+@push('script-page')
+    <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
+    <script>
+        $(function () {
+            $('select').multipleSelect()
+        })
+    </script>
+@endpush
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Dashboard')}}</a></li>
     <li class="breadcrumb-item">{{__('Document')}}</li>
@@ -22,20 +30,6 @@
     </div>
 @endsection
 @section('content')
-    <select multiple="multiple" class="multiple-select">
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-    </select>
 <section class="mt-3 rounded_box">
 	<div class="container-fluid p-0 pb-2">
 		<div class="row d-flex align--center rounded">
@@ -51,6 +45,20 @@
 
 									<div class="col-md-4 mb-2">
 										<div class="mb-3">
+                                            <select multiple="multiple" class="multiple-select">
+                                                <option value="1">January</option>
+                                                <option value="2">February</option>
+                                                <option value="3">March</option>
+                                                <option value="4">April</option>
+                                                <option value="5">May</option>
+                                                <option value="6">June</option>
+                                                <option value="7">July</option>
+                                                <option value="8">August</option>
+                                                <option value="9">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                            </select>
 										</div>
 									</div>
 

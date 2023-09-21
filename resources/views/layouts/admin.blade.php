@@ -240,7 +240,6 @@
 </div>
 @include('partials.admin.footer')
 @include('Chatify::layouts.footerLinks')
-<script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
 
 </body>
 </html>
