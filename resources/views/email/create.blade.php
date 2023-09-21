@@ -26,6 +26,7 @@
         $(function () {
             $('input[name="schedule"]').change(function (e) {
                 const val= parseInt($(e.target).val());
+                console.log(val)
                 if(val === 1) $('.schedule-date').hide();
                 else $('.schedule-date').show();
             });
