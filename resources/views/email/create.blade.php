@@ -13,6 +13,10 @@
         .ms-parent .placeholder{
             background-color: unset !important;
         }
+
+        .ck-editor__editable {
+            min-height: 500px;
+        }
     </style>
 @endpush
 @push('script-page')
@@ -233,7 +237,7 @@
 					            		</label>
 					            		<div class="input-group">
                                             <label class="w-100 d-block">
-                                                <textarea class="form-control w-100" name="message" id="message" rows="2">{{ old("message") }}</textarea>
+                                                <textarea class="form-control w-100" name="message" id="message">{{ old("message") }}</textarea>
                                             </label>
 					            		</div>
 					          		</div>
