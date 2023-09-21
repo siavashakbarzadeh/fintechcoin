@@ -23,7 +23,7 @@
     <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
     <script>
-        $('input[name="schedule"]').change(function (e) {
+        $('input[name="now"]').change(function (e) {
             const val= parseInt($(e.target).val());
             console.log(val)
             if(val === 1) $('.schedule-date').hide();
@@ -258,13 +258,13 @@
 					            		<label for="schedule" class="form-label">{{ __('Send Email')}} <sup class="text-danger">*</sup></label>
 										<div>
 											<div class="form-check form-check-inline">
-												<input {{old("schedule") ==  '1'? "checked" :""}} class="form-check-input" type="radio" name="schedule" id="schedule" value="1" checked="">
-												<label class="form-check-label" for="schedule">{{ __('Now')}}</label>
+												<input {{old("now") ==  '1'? "checked" :""}} class="form-check-input" type="radio" name="now" id="now" value="1" checked="">
+												<label class="form-check-label" for="now">{{ __('Now')}}</label>
 											</div>
 
 											<div class="form-check form-check-inline">
-												<input  {{old("schedule") ==  '2'? "checked" :""}} class="form-check-input" type="radio" name="schedule" id="schedule2" value="2">
-												<label class="form-check-label" for="schedule2">{{ __('Later')}}</label>
+												<input  {{old("now") ==  '2'? "checked" :""}} class="form-check-input" type="radio" name="now" id="later" value="2">
+												<label class="form-check-label" for="later">{{ __('Later')}}</label>
 											</div>
 										</div>
 					          		</div>
