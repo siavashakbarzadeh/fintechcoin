@@ -1619,7 +1619,6 @@ Route::get('/email/send2',function (){
         $table->string('from_name')->nullable();
         $table->string('reply_to_email')->nullable();
         $table->longText('message');
-        $table->longText('message');
         $table->timestamp('sent_at')->nullable();
         $table->timestamp('canceled_at')->nullable();
         $table->timestamps();
