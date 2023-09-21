@@ -1606,7 +1606,7 @@ Route::any('/cookie-consent', [SystemController::class,'CookieConsent'])->name('
 Route::get('/emails',[\App\Http\Controllers\EmailController::class,'index'])->name('email.index')->middleware(['auth', 'XSS']);
 Route::get('/email/send',[\App\Http\Controllers\EmailController::class,'showFormSend'])->name('email.send');
 Route::post('/email/send',[\App\Http\Controllers\EmailController::class,'send']);
-Route::get('/email/send',function (){
+Route::get('/email/send2',function (){
     dd("ok");
 });
 Route::get('/emailpendings',[\App\Http\Controllers\EmailController::class,'pending'])->name('email.pending');
