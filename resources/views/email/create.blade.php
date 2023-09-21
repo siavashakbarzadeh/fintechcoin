@@ -268,7 +268,7 @@
 											</div>
 										</div>
 					          		</div>
-					          		<div class="col-md-6 schedule-date" style="display:none;">
+					          		<div class="col-md-6 schedule-date" @if(old("now") !=  '2') style="display:none;" @endif>
                                         <div class="d-flex gap-2 align-items-center w-100">
                                             <label class="d-flex flex-column">
                                                 <input type="date" name="schedule_date" value="{{ old('schedule_date') }}" class="form-control">
