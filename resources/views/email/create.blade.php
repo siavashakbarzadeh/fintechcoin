@@ -9,6 +9,10 @@
         select {
             width: 100%;
         }
+
+        .ms-parent .placeholder{
+            background-color: unset !important;
+        }
     </style>
 @endpush
 @push('script-page')
