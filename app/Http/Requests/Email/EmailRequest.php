@@ -25,7 +25,7 @@ class EmailRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'array', 'min:1', 'exists:users,email'],
+            'emails' => ['required', 'array', 'min:1', 'exists:users,email'],
             'subject' => ['nullable', 'string'],
             'from_name' => ['nullable', 'string'],
             'message' => ['required', 'string'],
