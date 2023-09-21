@@ -53,6 +53,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public $settings;
 
+    public function emails()
+    {
+        return $this->morphToMany(Email::class,'emailable');
+    }
+
     public function getProfileAttribute()
     {
 
