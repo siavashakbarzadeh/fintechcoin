@@ -23,4 +23,9 @@ class Email extends Model
         'sent_at'=>'datetime',
         'canceled_at'=>'datetime',
     ];
+
+    public function users()
+    {
+        return $this->morphedByMany(User::class,'emailable');
+    }
 }
