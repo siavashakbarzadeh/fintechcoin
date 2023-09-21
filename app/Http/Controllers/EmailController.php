@@ -33,10 +33,15 @@ class EmailController extends Controller
 //            return redirect()->back()->with('error', __('Permission denied.'));
 //        }
     }
-    public function send()
+    public function showFormSend()
     {
         $customers=User::select(['name','email'])->get();
         return view('email.create',compact('customers') );
+    }
+
+    public function send(Request $request)
+    {
+        dd($request->all());
     }
     public function pending()
     {
