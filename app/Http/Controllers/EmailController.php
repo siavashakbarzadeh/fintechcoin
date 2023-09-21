@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Email\EmailRequest;
 use App\Models\Customer;
 use App\Models\EmailTemplate;
 use App\Models\EmailTemplateLang;
@@ -39,7 +40,7 @@ class EmailController extends Controller
         return view('email.create',compact('customers') );
     }
 
-    public function send(Request $request)
+    public function send(EmailRequest $request)
     {
         dd($request->all());
     }
