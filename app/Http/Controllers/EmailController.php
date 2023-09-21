@@ -33,11 +33,7 @@ class EmailController extends Controller
     }
     public function send()
     {
-//        dd('ok');
-        return view('email.create', );
-//        $title = "Compose Email";
-//        $emailGroups = EmailGroup::whereNull('user_id')->get();
-//        return view('admin.email.create', compact('title', 'emailGroups'));
+        return view('email.create' );
     }
     public function pending()
     {
