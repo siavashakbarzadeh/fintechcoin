@@ -45,13 +45,13 @@ class EmailController extends Controller
 
     public function send(EmailRequest $request)
     {
-        dd($request->all(),$request->schedule_date." ".$request->schedule_time,Carbon::createFromFormat('Y-m-d H:i',$request->schedule_date." ".$request->schedule_time));
         $email = Email::query()->create([
             'user_id' => $request->user()->id,
             'subject' => $request->subject,
             'from_name' => $request->from_name,
             'reply_to_email' => $request->reply_to_email,
             'message' => $request->message,
+            'sent_at' => $request->filled('schedule_date') && $request->filled('schedule_time') ? Carbon::createFromFormat('Y-m-d H:i',$request->schedule_date." ".$request->schedule_time) : null,
         ]);
     }
 
