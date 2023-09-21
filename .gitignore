@@ -3,4 +3,4 @@
 .env
 /vendor
 /public
-/storage/logs/*
+/storage/logs/laravel.log
