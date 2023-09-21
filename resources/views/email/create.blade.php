@@ -268,13 +268,15 @@
 											</div>
 										</div>
 					          		</div>
-					          		<div class="col-md-6 schedule-date d-flex gap-2 align-items-center" style="display:none;">
-                                        <label class="d-flex">
-                                            <input type="date" class="form-control">
-                                        </label>
-                                        <label class="d-flex">
-                                            <input type="time" class="form-control">
-                                        </label>
+					          		<div class="col-md-6 schedule-date" style="display:none;">
+                                        <div class="d-flex gap-2 align-items-center w-100">
+                                            <label class="d-flex">
+                                                <input type="date" class="form-control">
+                                            </label>
+                                            <label class="d-flex">
+                                                <input type="time" class="form-control">
+                                            </label>
+                                        </div>
                                     </div>
 				          		</div>
 				          	</div>
