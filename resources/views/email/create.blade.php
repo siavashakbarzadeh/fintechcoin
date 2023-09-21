@@ -20,7 +20,8 @@
     <script>
         $(function () {
             $('select').multipleSelect({
-                placeholder:"Select customers"
+                placeholder:"",
+                filter: true
             })
         })
     </script>
