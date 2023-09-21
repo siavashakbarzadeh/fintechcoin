@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\EmailTemplate;
 use App\Models\EmailTemplateLang;
 use App\Models\UserEmailTemplate;
@@ -33,6 +34,8 @@ class EmailController extends Controller
     }
     public function send()
     {
+        $customers=Customer::get();
+        dd($customers);
         return view('email.create' );
     }
     public function pending()
