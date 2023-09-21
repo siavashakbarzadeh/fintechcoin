@@ -6,9 +6,6 @@
 @push('css-page')
     <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.css">
 @endpush
-@push('script-page')
-    <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
-@endpush
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Dashboard')}}</a></li>
     <li class="breadcrumb-item">{{__('Document')}}</li>
