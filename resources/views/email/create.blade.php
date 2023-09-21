@@ -189,7 +189,7 @@
                                                 <label class="w-100 d-block">
                                                     <select name="emails[]" multiple="multiple" class="multiple-select">
                                                         @foreach($customers as $customer)
-                                                            <option value="{{ $customer->email }}">{{ $customer->name }}</option>
+                                                            <option value="{{ $customer->email }}" @if(in_array($customer->email,old('emails'))) selected @endif>{{ $customer->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </label>
@@ -242,7 +242,7 @@
 					            		</label>
 					            		<div class="input-group">
                                             <label class="w-100 d-block">
-                                                <textarea class="form-control w-100" name="message" id="message">{{ old("message") }}</textarea>
+                                                <textarea class="form-control w-100" name="message" id="message">aaa</textarea>
                                             </label>
 					            		</div>
 					          		</div>
@@ -270,13 +270,13 @@
 					          		</div>
 					          		<div class="col-md-6 schedule-date" style="display:none;">
                                         <div class="d-flex gap-2 align-items-center w-100">
-                                            <label class="d-flex">
+                                            <label class="d-flex flex-column">
                                                 <input type="date" name="schedule_date" value="{{ old('schedule_date') }}" class="form-control">
                                                 @error('schedule_date')
                                                 <span class="text-sm text-danger">{{ $message }}</span>
                                                 @enderror
                                             </label>
-                                            <label class="d-flex">
+                                            <label class="d-flex flex-column">
                                                 <input type="time" name="schedule_time" value="{{ old('schedule_time') }}" class="form-control">
                                                 @error('schedule_time')
                                                 <span class="text-sm text-danger">{{ $message }}</span>
