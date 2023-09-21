@@ -24,6 +24,9 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
     <script>
         $(function () {
+            $('input[name="schedule"]').change(function (e) {
+                console.log(e)
+            });
             $('select').multipleSelect({
                 placeholder:"",
                 filter: true
