@@ -17,6 +17,7 @@
 @endpush
 @push('script-page')
     <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
     <script>
         $(function () {
             $('select').multipleSelect({
