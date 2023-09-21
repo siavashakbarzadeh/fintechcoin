@@ -189,7 +189,7 @@
                                                 <label class="w-100 d-block">
                                                     <select name="emails[]" multiple="multiple" class="multiple-select">
                                                         @foreach($customers as $customer)
-                                                            <option value="{{ $customer->email }}" @if(in_array($customer->email,old('emails'))) selected @endif>{{ $customer->name }}</option>
+                                                            <option value="{{ $customer->email }}" @if(old('emails') && in_array($customer->email,old('emails'))) selected @endif>{{ $customer->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </label>
