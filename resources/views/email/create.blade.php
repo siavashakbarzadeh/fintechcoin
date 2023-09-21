@@ -25,9 +25,11 @@
     <script>
         $('input[name="now"]').change(function (e) {
             const val= parseInt($(e.target).val());
-            console.log(val)
-            if(val === 1) $('.schedule-date').hide();
-            else $('.schedule-date').show();
+            if(val === 1) {
+                $('input[name="schedule_date"]').val(null);
+                $('input[name="schedule_time"]').val(null);
+                $('.schedule-date').hide();
+            } else $('.schedule-date').show();
         });
         $(function () {
             $('select').multipleSelect({
