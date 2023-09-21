@@ -66,7 +66,7 @@ class DashboardController extends Controller
      */
     public function account_dashboard_index()
     {
-
+        dd("salam");
         if(Auth::check())
         {
             if(Auth::user()->type == 'super admin')
