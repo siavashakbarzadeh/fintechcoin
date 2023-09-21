@@ -57,11 +57,13 @@
 									<div class="col-md-6 mb-2">
 										<div class="mb-3">
                                             <div class="input-group input-group-merge">
-                                                <select name="emails[]" multiple="multiple" class="multiple-select">
-                                                    @foreach($customers as $customer)
-                                                        <option value="{{ $customer->email }}">{{ $customer->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <label class="w-100 d-block">
+                                                    <select name="emails[]" multiple="multiple" class="multiple-select form-control">
+                                                        @foreach($customers as $customer)
+                                                            <option value="{{ $customer->email }}">{{ $customer->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </label>
                                             </div>
 										</div>
 									</div>
