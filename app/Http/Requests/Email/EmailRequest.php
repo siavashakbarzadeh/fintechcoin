@@ -24,7 +24,6 @@ class EmailRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->all());
         return [
             'emails' => ['required', 'array', 'min:1', 'exists:users,email'],
             'subject' => ['nullable', 'string'],
@@ -32,7 +31,7 @@ class EmailRequest extends FormRequest
             'message' => ['required', 'string'],
             'now' => ['nullable', 'boolean'],
             'schedule_date' => ['nullable', 'date'],
-            'schedule_time' => ['nullable','date_format:h:i A'],
+            'schedule_time' => ['nullable','date_format:H:i'],
         ];
     }
 
