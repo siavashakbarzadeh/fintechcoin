@@ -57,14 +57,6 @@
             </li>
             @if(\Auth::user()->type != 'client')
                 <ul class="dash-navbar">
-                    <li class="dash-item dash-hasmenu">
-                        <a href="" class="dash-link">
-                            <span class="dash-micon">
-                                <i class="ti ti-mail"></i>
-                            </span>
-                            <span class="dash-mtext">ایمیل</span>
-                        </a>
-                    </li>
                     <!--------------------- Start Dashboard ----------------------------------->
                     @if( Gate::check('show hrm dashboard') || Gate::check('show project dashboard') || Gate::check('show account dashboard') || Gate::check('show crm dashboard') || Gate::check('show pos dashboard'))
                         <li class="dash-item dash-hasmenu
