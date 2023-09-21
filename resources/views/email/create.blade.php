@@ -232,7 +232,9 @@
 					            			{{ __('Message Body')}} <sup class="text-danger">*</sup>
 					            		</label>
 					            		<div class="input-group">
-					            			<textarea  class="form-control" name="message" id="message" rows="2"> {{old("message")}}  </textarea>
+                                            <label class="w-100 d-block">
+                                                <textarea class="form-control w-100" name="message" id="message" rows="2">{{ old("message") }}</textarea>
+                                            </label>
 					            		</div>
 					          		</div>
 				          		</div>
