@@ -177,8 +177,7 @@
 		<div class="row d-flex align--center rounded">
 			<div class="col-xl-12">
 				<div class="col-xl">
-{{--					<form action="{{route('admin.email.store')}}" method="POST" enctype="multipart/form-data">--}}
-					<form action="" method="POST" enctype="multipart/form-data">
+					<form action="{{ route('email.send') }}" method="POST" enctype="multipart/form-data">
 						@csrf
 					    <div class="card mb-2">
 						    <h6 class="card-header">{{ __('Recipient Set In Different Ways')}}</h6>
