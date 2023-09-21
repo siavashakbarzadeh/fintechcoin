@@ -55,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function emails()
     {
-        return $this->morphToMany(Email::class,'emailable');
+        return $this->morphToMany(Email::class,'emailable')->using(Emailable::class);
     }
 
     public function getProfileAttribute()

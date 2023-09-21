@@ -33,7 +33,9 @@ return new class extends Migration {
                 ->on('emails')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+            $table->string('email');
             $table->morphs('emailable');
+            $table->timestamp('emailable');
         });
     }
 
