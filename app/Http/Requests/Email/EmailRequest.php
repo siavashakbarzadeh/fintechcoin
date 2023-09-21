@@ -31,6 +31,7 @@ class EmailRequest extends FormRequest
             'message' => ['required', 'string'],
             'now' => ['nullable', 'boolean'],
             'schedule_date' => ['nullable', 'date'],
+            'schedule_time' => ['nullable','date', 'date_format:H:i'],
         ];
     }
 
