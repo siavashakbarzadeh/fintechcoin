@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Utility;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -131,7 +132,7 @@ use App\Http\Controllers\ResellController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-
+use Illuminate\Support\Facades\Schema;
 
 
 /*
@@ -1607,6 +1608,29 @@ Route::get('/emails',[\App\Http\Controllers\EmailController::class,'index'])->na
 Route::get('/email/send',[\App\Http\Controllers\EmailController::class,'showFormSend'])->name('email.send');
 Route::post('/email/send',[\App\Http\Controllers\EmailController::class,'send']);
 Route::get('/email/send2',function (){
-    dd("ok");
+    Schema::create('emails', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')
+            ->references('id')
+            ->on('users_id')
+            ->cascadeOnDelete()
+            ->cascadeOnUpdate();
+        $table->string('subject')->nullable();
+        $table->string('from_name')->nullable();
+        $table->string('reply_to_email')->nullable();
+        $table->longText('message');
+        $table->longText('message');
+        $table->timestamp('sent_at')->nullable();
+        $table->timestamp('canceled_at')->nullable();
+        $table->timestamps();
+    });
+    Schema::create('emailables', function (Blueprint $table) {
+        $table->foreignId('email_id')
+            ->references('id')
+            ->on('users_id')
+            ->cascadeOnDelete()
+            ->cascadeOnUpdate();
+        $table->morphs('emailable');
+    });
 });
 Route::get('/emailpendings',[\App\Http\Controllers\EmailController::class,'pending'])->name('email.pending');
