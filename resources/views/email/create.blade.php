@@ -16,7 +16,7 @@
     <script>
         $(function () {
             $('select').multipleSelect({
-                placeholder:false
+                placeholder:"Select customers"
             })
         })
     </script>
