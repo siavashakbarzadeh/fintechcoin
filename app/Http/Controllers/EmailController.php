@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\EmailTemplate;
 use App\Models\EmailTemplateLang;
+use App\Models\User;
 use App\Models\UserEmailTemplate;
 use App\Models\Utility;
 use Illuminate\Http\Request;
