@@ -45,7 +45,7 @@ class EmailController extends Controller
 
     public function send(EmailRequest $request)
     {
-        dd($request->all(),Carbon::createFromFormat('Y/m/d H:i',$request->schedule_date." ".$request->schedule_time));
+        dd($request->all(),$request->schedule_date." ".$request->schedule_time);
         $email = Email::query()->create([
             'user_id' => $request->user()->id,
             'subject' => $request->subject,
