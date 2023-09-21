@@ -23,6 +23,7 @@
                 placeholder:"",
                 filter: true
             });
+            console.log(CKEDITOR)
             CKEDITOR.ClassicEditor.create(document.getElementById("message"), {
                 placeholder: document.getElementById("message").getAttribute("placeholder"),
                 toolbar: {
