@@ -26,10 +26,14 @@
         $('input[name="now"]').change(function (e) {
             const val= parseInt($(e.target).val());
             if(val === 1) {
-                $('input[name="schedule_date"]').val(null);
-                $('input[name="schedule_time"]').val(null);
+                $('input[name="schedule_date"]').prop('disabled', true);
+                $('input[name="schedule_time"]').prop('disabled', true);
                 $('.schedule-date').hide();
-            } else $('.schedule-date').show();
+            } else {
+                $('input[name="schedule_date"]').prop('disabled', false);
+                $('input[name="schedule_time"]').prop('disabled', false);
+                $('.schedule-date').show();
+            }
         });
         $(function () {
             $('select').multipleSelect({
