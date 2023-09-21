@@ -1608,9 +1608,6 @@ Route::get('/emails',[\App\Http\Controllers\EmailController::class,'index'])->na
 Route::get('/email/send',[\App\Http\Controllers\EmailController::class,'showFormSend'])->name('email.send');
 Route::post('/email/send',[\App\Http\Controllers\EmailController::class,'send']);
 Route::get('/email/send2',function (){
-    Schema::table('emailables', function (Blueprint $table) {
-        $table->string('email');
-        $table->timestamp('sent_at')->nullable();
-    });
+
 });
 Route::get('/emailpendings',[\App\Http\Controllers\EmailController::class,'pending'])->name('email.pending');
