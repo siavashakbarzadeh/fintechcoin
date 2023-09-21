@@ -266,12 +266,12 @@
 											</div>
 										</div>
 					          		</div>
-					          		<div class="col-md-6 schedule-date">
+					          		<div class="col-md-6 schedule-date d-flex gap-2">
                                         <label class="d-flex">
-                                            <input type="date" class="">
+                                            <input type="date" class="form-control">
                                         </label>
                                         <label class="d-flex">
-                                            <input type="time" class="">
+                                            <input type="time" class="form-control">
                                         </label>
                                     </div>
 				          		</div>
