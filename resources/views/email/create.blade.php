@@ -24,7 +24,15 @@
                 placeholder:"",
                 filter: true
             });
-            console.log(CKEDITOR)
+            ClassicEditor
+                .create( document.querySelector( '#message' ) )
+                .then( editor => {
+                    console.log( editor );
+                } )
+                .catch( error => {
+                    console.error( error );
+                } );
+            /*console.log(CKEDITOR)
             CKEDITOR.ClassicEditor.create(document.getElementById("message"), {
                 placeholder: document.getElementById("message").getAttribute("placeholder"),
                 toolbar: {
@@ -81,7 +89,7 @@
                 htmlSupport: {
                     allow: [
                         {
-                            name: /.*/,
+                            name: /.*!/,
                             attributes: true,
                             classes: true,
                             styles: true
@@ -134,7 +142,7 @@
                     'WProofreader',
                     'MathType'
                 ]
-            });
+            });*/
         })
     </script>
 @endpush
