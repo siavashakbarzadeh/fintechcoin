@@ -36,8 +36,7 @@ class EmailController extends Controller
     public function send()
     {
         $customers=User::select(['name','email'])->get();
-        dd($customers);
-        return view('email.create' );
+        return view('email.create',compact('customers') );
     }
     public function pending()
     {

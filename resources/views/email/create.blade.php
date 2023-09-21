@@ -3,6 +3,12 @@
 @section('page-title')
     {{__('Manage Document')}}
 @endsection
+@section('css-page')
+    <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.css">
+@endsection
+@section('script-page')
+    <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
+@endsection
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Dashboard')}}</a></li>
     <li class="breadcrumb-item">{{__('Document')}}</li>
@@ -34,16 +40,20 @@
 
 									<div class="col-md-4 mb-2">
 										<div class="mb-3">
-											<label class="form-label">
-												{{ __('Single Input') }}
-											</label>
-											<div class="input-group input-group-merge">
-												<select class="form-control emailcollect" name="email[]" id="email" multiple>
-												</select>
-											</div>
-											<div class="form-text">
-						            			{{ __('Put single or search from save contact')}}
-											</div>
+                                            <select multiple="multiple" class="multiple-select">
+                                                <option value="1">January</option>
+                                                <option value="2">February</option>
+                                                <option value="3">March</option>
+                                                <option value="4">April</option>
+                                                <option value="5">May</option>
+                                                <option value="6">June</option>
+                                                <option value="7">July</option>
+                                                <option value="8">August</option>
+                                                <option value="9">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                            </select>
 										</div>
 									</div>
 
