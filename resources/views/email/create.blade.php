@@ -21,7 +21,7 @@
 @endpush
 @push('script-page')
     <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
     <script>
         $('input[name="now"]').change(function (e) {
             const val= parseInt($(e.target).val());
@@ -40,23 +40,7 @@
                 placeholder:"",
                 filter: true
             });
-            ClassicEditor
-                .create( document.querySelector( '#message' ),{
-                    templates: [
-                        {
-                            title: "Quickclick 1",
-                            description: "Quickclick 1 template",
-                            html_et: "<span>test1</span>",
-                            html:'  <span>test</span>'
-                        }
-                    ]
-                })
-                .then( editor => {
-                    console.log( editor );
-                } )
-                .catch( error => {
-                    console.error( error );
-                } );
+            CKEDITOR.replace( 'message' );
             /*console.log(CKEDITOR)
             CKEDITOR.ClassicEditor.create(document.getElementById("message"), {
                 placeholder: document.getElementById("message").getAttribute("placeholder"),
