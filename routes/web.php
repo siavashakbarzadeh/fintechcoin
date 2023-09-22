@@ -1609,16 +1609,13 @@ Route::get('/emails',[\App\Http\Controllers\EmailController::class,'index'])->na
 Route::get('/email/send',[\App\Http\Controllers\EmailController::class,'showFormSend'])->name('email.send');
 Route::post('/email/send',[\App\Http\Controllers\EmailController::class,'send']);
 Route::get('/check', function () {
-    Schema::create('jobs', function (Blueprint $table) {
-        $table->bigIncrements('id');
-        $table->string('queue');
+    Schema::create('failed_jobs', function (Blueprint $table) {
+        $table->increments('id');
+        $table->text('connection');
+        $table->text('queue');
         $table->longText('payload');
-        $table->tinyInteger('attempts')->unsigned();
-        $table->tinyInteger('reserved')->unsigned();
-        $table->unsignedInteger('reserved_at')->nullable();
-        $table->unsignedInteger('available_at');
-        $table->unsignedInteger('created_at');
-        $table->index(['queue', 'reserved', 'reserved_at']);
+        $table->longText('exception');
+        $table->timestamp('failed_at')->useCurrent();
     });
 });
 Route::get('/emailpendings',[\App\Http\Controllers\EmailController::class,'pending'])->name('email.pending');
