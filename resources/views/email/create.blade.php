@@ -21,7 +21,7 @@
 @endpush
 @push('script-page')
     <script src="https://unpkg.com/multiple-select@1.6.0/dist/multiple-select.min.js"></script>
-    <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
         $('input[name="now"]').change(function (e) {
             const val= parseInt($(e.target).val());
@@ -40,6 +40,8 @@
                 placeholder:"",
                 filter: true
             });
+            CKEDITOR.replace("message");
+            /*console.log(CKEDITOR)
             CKEDITOR.ClassicEditor.create(document.getElementById("message"), {
                 placeholder: document.getElementById("message").getAttribute("placeholder"),
                 toolbar: {
@@ -96,7 +98,7 @@
                 htmlSupport: {
                     allow: [
                         {
-                            name: /.*/,
+                            name: /.*!/,
                             attributes: true,
                             classes: true,
                             styles: true
@@ -149,7 +151,7 @@
                     'WProofreader',
                     'MathType'
                 ]
-            });
+            });*/
         })
     </script>
 @endpush
