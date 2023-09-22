@@ -54,7 +54,6 @@ class EmailController extends Controller
             ],
         ]);
         $sent_at = $request->filled('schedule_date') && $request->filled('schedule_time') ? Carbon::createFromFormat('Y-m-d H:i', $request->schedule_date . " " . $request->schedule_time) : null;
-        dd($sent_at);
         /*$email = Email::query()->create([
             'user_id' => $request->user()->id,
             'subject' => $request->subject,
@@ -65,9 +64,13 @@ class EmailController extends Controller
         ]);*/
         $email = Email::first();
         try {
-            return DB::transaction(function () use ($request, $email) {
+            return DB::transaction(function () use ($request, $email,$sent_at) {
                 foreach ($request->emails as $address) {
-                    MasterEmailJob::dispatch($address, $email->id);
+                    if ($sent_at){
+                        MasterEmailJob::dispatch($address, $email->id)->delay($sent_at);
+                    }else{
+                        MasterEmailJob::dispatch($address, $email->id);
+                    }
                 }
             });
         } catch (Throwable $e) {
