@@ -40,8 +40,6 @@
                 placeholder:"",
                 filter: true
             });
-            CKEDITOR.replace( 'message' );
-            /*console.log(CKEDITOR)
             CKEDITOR.ClassicEditor.create(document.getElementById("message"), {
                 placeholder: document.getElementById("message").getAttribute("placeholder"),
                 toolbar: {
@@ -98,7 +96,7 @@
                 htmlSupport: {
                     allow: [
                         {
-                            name: /.*!/,
+                            name: /.*/,
                             attributes: true,
                             classes: true,
                             styles: true
@@ -151,7 +149,7 @@
                     'WProofreader',
                     'MathType'
                 ]
-            });*/
+            });
         })
     </script>
 @endpush
