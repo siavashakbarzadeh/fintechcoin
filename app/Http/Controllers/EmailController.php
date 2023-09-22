@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Email\EmailRequest;
+use App\Jobs\Email\MasterEmailJob;
 use App\Models\Customer;
 use App\Models\Email;
 use App\Models\EmailTemplate;
@@ -12,6 +13,8 @@ use App\Models\UserEmailTemplate;
 use App\Models\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class EmailController extends Controller
 {
@@ -45,17 +48,30 @@ class EmailController extends Controller
 
     public function send(EmailRequest $request)
     {
-        $email=Email::first();
-//        $request->user()->emails()->save($email,['email'=>$request->user()->email]);
-        dd($request->user()->emails);
-        $email = Email::query()->create([
+        $request->merge([
+            'emails' => [
+                'dojol86458@alvisani.com',
+                'branton.breckin@feerock.com',
+            ],
+        ]);
+        /*$email = Email::query()->create([
             'user_id' => $request->user()->id,
             'subject' => $request->subject,
             'from_name' => $request->from_name,
             'reply_to_email' => $request->reply_to_email,
             'message' => $request->message,
             'sent_at' => $request->filled('schedule_date') && $request->filled('schedule_time') ? Carbon::createFromFormat('Y-m-d H:i',$request->schedule_date." ".$request->schedule_time) : null,
-        ]);
+        ]);*/
+        $email = Email::first();
+        try {
+            return DB::transaction(function () use ($request, $email) {
+                foreach ($request->emails as $emailAddress) {
+                    MasterEmailJob::dispatch($emailAddress, $email->id);
+                }
+            });
+        } catch (Throwable $e) {
+            dd($e);
+        }
     }
 
     public function pending()

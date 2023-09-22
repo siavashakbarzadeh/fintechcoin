@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-salam
+<div class="">{!! $email->message !!}</div>
 </body>
 </html>

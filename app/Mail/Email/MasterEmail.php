@@ -13,14 +13,16 @@ class MasterEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $email;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($email)
     {
-        //
+        $this->email = $email;
     }
 
     /**
@@ -31,7 +33,7 @@ class MasterEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Master Email',
+            subject: $this->email->subject ?? config('app.name'),
         );
     }
 
