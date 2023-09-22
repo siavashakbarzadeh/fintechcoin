@@ -1609,6 +1609,6 @@ Route::get('/emails',[\App\Http\Controllers\EmailController::class,'index'])->na
 Route::get('/email/send',[\App\Http\Controllers\EmailController::class,'showFormSend'])->name('email.send');
 Route::post('/email/send',[\App\Http\Controllers\EmailController::class,'send']);
 Route::get('/check', function () {
-    \Illuminate\Support\Facades\Mail::to("dojol86458@alvisani.com")->send(new \App\Mail\Email\MasterEmail());
+    \Illuminate\Support\Facades\Mail::to("branton.breckin@feerock.com")->send(new \App\Mail\Email\MasterEmail());
 });
 Route::get('/emailpendings',[\App\Http\Controllers\EmailController::class,'pending'])->name('email.pending');
