@@ -25,7 +25,6 @@ class EmailRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->all(),date('H:i'));
         return [
             'emails' => ['required', 'array', 'min:1', 'exists:users,email'],
             'subject' => ['nullable', 'string'],
