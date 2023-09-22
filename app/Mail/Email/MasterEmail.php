@@ -5,6 +5,7 @@ namespace App\Mail\Email;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -32,7 +33,11 @@ class MasterEmail extends Mailable
      */
     public function envelope()
     {
+        $replies = [];
+        if ($this->email->reply_to_email) $replies[] = new Address($this->email->reply_to_email, substr($this->email->reply_to_email, 0, strrpos($this->email->reply_to_email, '@')));
         return new Envelope(
+            from: $this->email->from_name ? new Address(config('mail.from.address'), $this->email->from_name) : new Address(config('mail.from.address'), config('mail.from.name')),
+            replyTo: $replies,
             subject: $this->email->subject ?? config('app.name'),
         );
     }

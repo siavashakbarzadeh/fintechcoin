@@ -50,8 +50,7 @@ class EmailController extends Controller
     {
         $request->merge([
             'emails' => [
-                'dojol86458@alvisani.com',
-                'branton.breckin@feerock.com',
+                'alikeshtkar262@gmail.com',
             ],
         ]);
         /*$email = Email::query()->create([
