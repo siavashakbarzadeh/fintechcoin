@@ -66,10 +66,10 @@ class EmailController extends Controller
         try {
             return DB::transaction(function () use ($request, $email,$sent_at) {
                 foreach ($request->emails as $address) {
-                    if ($sent_at){
-                        MasterEmailJob::dispatch($address, $email->id)->delay($sent_at);
-                    }else{
+                    if (is_null($sent_at)){
                         MasterEmailJob::dispatch($address, $email->id);
+                    }else{
+                        MasterEmailJob::dispatch($address, $email->id)->delay($sent_at);
                     }
                 }
             });
