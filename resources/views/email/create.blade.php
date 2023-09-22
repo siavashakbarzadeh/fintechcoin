@@ -42,15 +42,14 @@
             });
             ClassicEditor
                 .create( document.querySelector( '#message' ),{
-                    template: {
-                        definitions: [
-                            {
-                                title: 'The title of the template',
-                                description: 'A longer description of the template',
-                                data: '<p>Data inserted into the content</p>'
-                            },
-                        ]
-                    }
+                    templates: [
+                        {
+                            title: "Quickclick 1",
+                            description: "Quickclick 1 template",
+                            html_et: "<span>test1</span>",
+                            html:'  <span>test</span>'
+                        }
+                    ]
                 })
                 .then( editor => {
                     console.log( editor );
