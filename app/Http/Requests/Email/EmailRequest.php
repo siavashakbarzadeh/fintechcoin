@@ -32,8 +32,8 @@ class EmailRequest extends FormRequest
             'reply_to_email' => ['nullable', 'string'],
             'message' => ['required', 'string'],
             'now' => ['nullable', 'boolean'],
-            'schedule_date' => [!Rule::requiredIf($this->now), 'date'],
-            'schedule_time' => [!Rule::requiredIf($this->now),'date_format:H:i'],
+            'schedule_date' => [!Rule::requiredIf($this->now), 'date','after_or_equal:'.date('Y-m-d')],
+            'schedule_time' => [!Rule::requiredIf($this->now), 'date_format:H:i', 'after:' . date('H:i')],
         ];
     }
 
