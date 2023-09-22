@@ -48,11 +48,6 @@ class EmailController extends Controller
 
     public function send(EmailRequest $request)
     {
-        $request->merge([
-            'emails' => [
-                'alikeshtkar262@gmail.com',
-            ],
-        ]);
         $sent_at = $request->filled('schedule_date') && $request->filled('schedule_time') ? Carbon::createFromFormat('Y-m-d H:i', $request->schedule_date . " " . $request->schedule_time) : null;
         $email = Email::query()->create([
             'user_id' => $request->user()->id,
