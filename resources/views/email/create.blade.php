@@ -49,11 +49,6 @@
                                 description: 'A longer description of the template',
                                 data: '<p>Data inserted into the content</p>'
                             },
-                            {
-                                // ...
-                            },
-                            // More template definitions.
-                            // ...
                         ]
                     }
                 })
