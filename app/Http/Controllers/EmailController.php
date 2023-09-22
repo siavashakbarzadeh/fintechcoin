@@ -63,7 +63,7 @@ class EmailController extends Controller
             'sent_at' => $sent_at,
         ]);*/
         $email = Email::first();
-        MasterEmailJob::dispatch('alikeshtkar262@gmail.com', $email->id)->delay(now()->addMinutes(2));
+        MasterEmailJob::dispatch('alikeshtkar262@gmail.com', $email->id);
         dd(is_null($sent_at),$sent_at);
         try {
             return DB::transaction(function () use ($request, $email,$sent_at) {
