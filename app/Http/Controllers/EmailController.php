@@ -54,17 +54,15 @@ class EmailController extends Controller
             ],
         ]);
         $sent_at = $request->filled('schedule_date') && $request->filled('schedule_time') ? Carbon::createFromFormat('Y-m-d H:i', $request->schedule_date . " " . $request->schedule_time) : null;
-        /*$email = Email::query()->create([
+        $email = Email::query()->create([
             'user_id' => $request->user()->id,
             'subject' => $request->subject,
             'from_name' => $request->from_name,
             'reply_to_email' => $request->reply_to_email,
             'message' => $request->message,
             'sent_at' => $sent_at,
-        ]);*/
-        $email = Email::first();
-        MasterEmailJob::dispatch('alikeshtkar262@gmail.com', $email->id);
-        dd(is_null($sent_at),$sent_at);
+        ]);
+//        $email = Email::first();
         try {
             return DB::transaction(function () use ($request, $email,$sent_at) {
                 foreach ($request->emails as $address) {
